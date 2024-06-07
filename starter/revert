@@ -1,6 +1,0 @@
-#!/bin/sh
-find . -name "route.info.ts" | xargs rm
-find . -name "page.info.ts" | xargs rm
-git reset --hard HEAD
-rm -fr next-tsr.config.json src/routes/
-rm NEXT-TSR-README.md
