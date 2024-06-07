@@ -9,6 +9,7 @@ const defaultInfo = {
 import * as HomeRoute from "@/app/page.info";
 import * as PokemonSearchAPIRoute from "@/app/api/pokemon/route.info";
 import * as ApiPokemonPokemonIdRoute from "@/app/api/pokemon/[pokemonId]/route.info";
+import * as ApiUsersRoute from "@/app/api/users/route.info";
 import * as PokemonDetailRoute from "@/app/pokemon/[pokemonId]/page.info";
 import * as SearchRoute from "@/app/search/page.info";
 
@@ -49,4 +50,12 @@ export const getApiPokemonPokemonId = makeGetRoute(
     ...ApiPokemonPokemonIdRoute.Route
   },
   ApiPokemonPokemonIdRoute.GET
+);
+export const getApiUsers = makeGetRoute(
+  "/api/users",
+  {
+    ...defaultInfo,
+    ...ApiUsersRoute.Route
+  },
+  ApiUsersRoute.GET
 );
