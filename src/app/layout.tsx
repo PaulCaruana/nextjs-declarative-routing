@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { Home, Search } from "@/routes";
-
 import "./globals.css";
 import Providers from "@/app/providers";
 
@@ -21,12 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} dark px-2 md:px-5`}>
+        {/*
         <header className="flex mb-5 gap-2 text-2xl py-3 px-6 bg-blue-900 text-white rounded-b-xl shadow-gray-700 drop-shadow-2xl">
           <Home.Link className="font-extrabold">Home</Home.Link>
           <Search.Link search={{ q: "bulb" }} className="font-light">
             Search
           </Search.Link>
         </header>
+*/}
         <div className="@container">
           <Providers>{children}</Providers>
         </div>
