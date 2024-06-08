@@ -14,7 +14,7 @@ type LinkProps = Parameters<typeof Link>[0];
 
 export type RouteInfo<
   Params extends z.ZodSchema,
-  Search extends z.ZodSchema
+  Search extends z.ZodSchema,
 > = {
   name: string;
   params: Params;
@@ -44,7 +44,7 @@ type PushOptions = Parameters<ReturnType<typeof useRouter>["push"]>[1];
 
 type CoreRouteElements<
   Params extends z.ZodSchema,
-  Search extends z.ZodSchema = typeof emptySchema
+  Search extends z.ZodSchema = typeof emptySchema,
 > = {
   params: z.output<Params>;
   paramsSchema: Params;
@@ -56,13 +56,13 @@ type PutRouteBuilder<
   Params extends z.ZodSchema,
   Search extends z.ZodSchema,
   Body extends z.ZodSchema,
-  Result extends z.ZodSchema
+  Result extends z.ZodSchema,
 > = CoreRouteElements<Params, Search> & {
   (
     body: z.input<Body>,
     p?: z.input<Params>,
     search?: z.input<Search>,
-    options?: FetchOptions
+    options?: FetchOptions,
   ): Promise<z.output<Result>>;
 
   body: z.output<Body>;
@@ -75,13 +75,13 @@ type PostRouteBuilder<
   Params extends z.ZodSchema,
   Search extends z.ZodSchema,
   Body extends z.ZodSchema,
-  Result extends z.ZodSchema
+  Result extends z.ZodSchema,
 > = CoreRouteElements<Params, Search> & {
   (
     body: z.input<Body>,
     p?: z.input<Params>,
     search?: z.input<Search>,
-    options?: FetchOptions
+    options?: FetchOptions,
   ): Promise<z.output<Result>>;
 
   body: z.output<Body>;
@@ -93,12 +93,12 @@ type PostRouteBuilder<
 type GetRouteBuilder<
   Params extends z.ZodSchema,
   Search extends z.ZodSchema,
-  Result extends z.ZodSchema
+  Result extends z.ZodSchema,
 > = CoreRouteElements<Params, Search> & {
   (
     p?: z.input<Params>,
     search?: z.input<Search>,
-    options?: FetchOptions
+    options?: FetchOptions,
   ): Promise<z.output<Result>>;
 
   result: z.output<Result>;
@@ -114,7 +114,7 @@ type DeleteRouteBuilder<Params extends z.ZodSchema> = CoreRouteElements<
 
 type RouteBuilder<
   Params extends z.ZodSchema,
-  Search extends z.ZodSchema
+  Search extends z.ZodSchema,
 > = CoreRouteElements<Params, Search> & {
   (p?: z.input<Params>, search?: z.input<Search>): string;
 
@@ -123,7 +123,7 @@ type RouteBuilder<
   usePush: () => (
     params: z.input<Params>,
     search?: z.input<Search>,
-    options?: PushOptions
+    options?: PushOptions,
   ) => void;
 
   Link: React.FC<
@@ -141,7 +141,7 @@ type RouteBuilder<
 };
 
 function createPathBuilder<T extends Record<string, string | string[]>>(
-  route: string
+  route: string,
 ): (params: T) => string {
   const pathArr = route.split("/");
 
@@ -161,7 +161,7 @@ function createPathBuilder<T extends Record<string, string | string[]>>(
     if (catchAll?.[1]) {
       const key = catchAll[1];
       elems.push((params: T) =>
-        (params[key as unknown as string] as string[]).join("/")
+        (params[key as unknown as string] as string[]).join("/"),
       );
     } else if (param?.[1]) {
       const key = param[1];
@@ -183,7 +183,7 @@ function createPathBuilder<T extends Record<string, string | string[]>>(
 
 function createRouteBuilder<
   Params extends z.ZodSchema,
-  Search extends z.ZodSchema
+  Search extends z.ZodSchema,
 >(route: string, info: RouteInfo<Params, Search>) {
   const fn = createPathBuilder<z.output<Params>>(route);
 
@@ -193,7 +193,7 @@ function createRouteBuilder<
       const safeParams = info.params.safeParse(checkedParams);
       if (!safeParams?.success) {
         throw new Error(
-          `Invalid params for route ${info.name}: ${safeParams.error.message}`
+          `Invalid params for route ${info.name}: ${safeParams.error.message}`,
         );
       } else {
         checkedParams = safeParams.data;
@@ -204,7 +204,7 @@ function createRouteBuilder<
       : null;
     if (info.search && !safeSearch?.success) {
       throw new Error(
-        `Invalid search params for route ${info.name}: ${safeSearch?.error.message}`
+        `Invalid search params for route ${info.name}: ${safeSearch?.error.message}`,
       );
     }
 
@@ -220,11 +220,11 @@ export function makePostRoute<
   Params extends z.ZodSchema,
   Search extends z.ZodSchema,
   Body extends z.ZodSchema,
-  Result extends z.ZodSchema
+  Result extends z.ZodSchema,
 >(
   route: string,
   info: RouteInfo<Params, Search>,
-  postInfo: PostInfo<Body, Result>
+  postInfo: PostInfo<Body, Result>,
 ): PostRouteBuilder<Params, Search, Body, Result> {
   const urlBuilder = createRouteBuilder(route, info);
 
@@ -232,12 +232,12 @@ export function makePostRoute<
     body: z.input<Body>,
     p?: z.input<Params>,
     search?: z.input<Search>,
-    options?: FetchOptions
+    options?: FetchOptions,
   ): Promise<z.output<Result>> => {
     const safeBody = postInfo.body.safeParse(body);
     if (!safeBody.success) {
       throw new Error(
-        `Invalid body for route ${info.name}: ${safeBody.error.message}`
+        `Invalid body for route ${info.name}: ${safeBody.error.message}`,
       );
     }
 
@@ -260,7 +260,7 @@ export function makePostRoute<
         const result = postInfo.result.safeParse(data);
         if (!result.success) {
           throw new Error(
-            `Invalid response for route ${info.name}: ${result.error.message}`
+            `Invalid response for route ${info.name}: ${result.error.message}`,
           );
         }
         return result.data;
@@ -283,11 +283,11 @@ export function makePutRoute<
   Params extends z.ZodSchema,
   Search extends z.ZodSchema,
   Body extends z.ZodSchema,
-  Result extends z.ZodSchema
+  Result extends z.ZodSchema,
 >(
   route: string,
   info: RouteInfo<Params, Search>,
-  putInfo: PutInfo<Body, Result>
+  putInfo: PutInfo<Body, Result>,
 ): PutRouteBuilder<Params, Search, Body, Result> {
   const urlBuilder = createRouteBuilder(route, info);
 
@@ -295,12 +295,12 @@ export function makePutRoute<
     body: z.input<Body>,
     p?: z.input<Params>,
     search?: z.input<Search>,
-    options?: FetchOptions
+    options?: FetchOptions,
   ): Promise<z.output<Result>> => {
     const safeBody = putInfo.body.safeParse(body);
     if (!safeBody.success) {
       throw new Error(
-        `Invalid body for route ${info.name}: ${safeBody.error.message}`
+        `Invalid body for route ${info.name}: ${safeBody.error.message}`,
       );
     }
 
@@ -323,7 +323,7 @@ export function makePutRoute<
         const result = putInfo.result.safeParse(data);
         if (!result.success) {
           throw new Error(
-            `Invalid response for route ${info.name}: ${result.error.message}`
+            `Invalid response for route ${info.name}: ${result.error.message}`,
           );
         }
         return result.data;
@@ -345,18 +345,18 @@ export function makePutRoute<
 export function makeGetRoute<
   Params extends z.ZodSchema,
   Search extends z.ZodSchema,
-  Result extends z.ZodSchema
+  Result extends z.ZodSchema,
 >(
   route: string,
   info: RouteInfo<Params, Search>,
-  getInfo: GetInfo<Result>
+  getInfo: GetInfo<Result>,
 ): GetRouteBuilder<Params, Search, Result> {
   const urlBuilder = createRouteBuilder(route, info);
 
   const routeBuilder: GetRouteBuilder<Params, Search, Result> = (
     p?: z.input<Params>,
     search?: z.input<Search>,
-    options?: FetchOptions
+    options?: FetchOptions,
   ): Promise<z.output<Result>> => {
     return fetch(urlBuilder(p, search), options)
       .then((res) => {
@@ -369,7 +369,7 @@ export function makeGetRoute<
         const result = getInfo.result.safeParse(data);
         if (!result.success) {
           throw new Error(
-            `Invalid response for route ${info.name}: ${result.error.message}`
+            `Invalid response for route ${info.name}: ${result.error.message}`,
           );
         }
         return result.data;
@@ -388,14 +388,14 @@ export function makeGetRoute<
 
 export function makeDeleteRoute<
   Params extends z.ZodSchema,
-  Search extends z.ZodSchema
+  Search extends z.ZodSchema,
 >(route: string, info: RouteInfo<Params, Search>): DeleteRouteBuilder<Params> {
   const urlBuilder = createRouteBuilder(route, info);
 
   const routeBuilder: DeleteRouteBuilder<Params> = (
     p?: z.input<Params>,
     search?: z.input<Search>,
-    options?: FetchOptions
+    options?: FetchOptions,
   ): Promise<void> => {
     return fetch(urlBuilder(p, search), options).then((res) => {
       if (!res.ok) {
@@ -414,21 +414,21 @@ export function makeDeleteRoute<
 
 export function makeRoute<
   Params extends z.ZodSchema,
-  Search extends z.ZodSchema = typeof emptySchema
+  Search extends z.ZodSchema = typeof emptySchema,
 >(
   route: string,
-  info: RouteInfo<Params, Search>
+  info: RouteInfo<Params, Search>,
 ): RouteBuilder<Params, Search> {
   const urlBuilder: RouteBuilder<Params, Search> = createRouteBuilder(
     route,
-    info
+    info,
   ) as RouteBuilder<Params, Search>;
 
   urlBuilder.useParams = function useParams(): z.output<Params> {
     const res = info.params.safeParse(useNextParams());
     if (!res.success) {
       throw new Error(
-        `Invalid route params for route ${info.name}: ${res.error.message}`
+        `Invalid route params for route ${info.name}: ${res.error.message}`,
       );
     }
     return res.data;
@@ -437,11 +437,11 @@ export function makeRoute<
   if (info?.search) {
     urlBuilder.useSearchParams = function useSearchParams(): z.output<Search> {
       const res = info.search!.safeParse(
-        convertURLSearchParamsToObject(useNextSearchParams())
+        convertURLSearchParamsToObject(useNextSearchParams()),
       );
       if (!res.success) {
         throw new Error(
-          `Invalid search params for route ${info.name}: ${res.error.message}`
+          `Invalid search params for route ${info.name}: ${res.error.message}`,
         );
       }
       return res.data;
@@ -496,7 +496,7 @@ export function makeRoute<
     return (
       p: z.input<Params>,
       search?: z.input<Search>,
-      options?: PushOptions
+      options?: PushOptions,
     ) => {
       push(urlBuilder(p, search), options);
     };
@@ -511,7 +511,7 @@ export function makeRoute<
 }
 
 function convertURLSearchParamsToObject(
-  params: Readonly<URLSearchParams> | null
+  params: Readonly<URLSearchParams> | null,
 ): Record<string, string | string[]> {
   if (!params) {
     return {};

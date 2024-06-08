@@ -1,15 +1,15 @@
 import { z } from "zod";
+import { userSchema } from "@/model/user";
 
 export const Route = {
   name: "Users",
-  params: z.object({
-  })
+  params: z.object({}),
 };
 
 export const GET = {
-  result: z.object({}),
+  result: z.array(userSchema),
 };
 export const POST = {
-  body: z.object({}),
-  result: z.object({}),
+  body: userSchema,
+  result: userSchema,
 };

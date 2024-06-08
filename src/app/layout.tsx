@@ -1,9 +1,10 @@
-import type {Metadata} from "next";
-import {Inter} from "next/font/google";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
-import {Home, Search} from "@/routes";
+import { Home, Search } from "@/routes";
 
 import "./globals.css";
+import Providers from "@/app/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +27,9 @@ export default function RootLayout({
             Search
           </Search.Link>
         </header>
-        <div className="@container">{children}</div>
+        <div className="@container">
+          <Providers>{children}</Providers>
+        </div>
       </body>
     </html>
   );
