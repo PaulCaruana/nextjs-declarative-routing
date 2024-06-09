@@ -208,10 +208,16 @@ function createRouteBuilder<
       );
     }
 
-    const baseUrl = fn(checkedParams);
+    const baseUrl = getBaseRootUrl() + fn(checkedParams);
     const searchString = search && queryString.stringify(search);
     return [baseUrl, searchString ? `?${searchString}` : ""].join("");
   };
+}
+
+function getBaseRootUrl() {
+  if (typeof window !== "undefined") return "";
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return `http://localhost:${process.env.PORT ?? 3000}`;
 }
 
 const emptySchema = z.object({});

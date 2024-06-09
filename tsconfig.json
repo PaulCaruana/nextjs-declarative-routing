@@ -19,7 +19,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@/form": ["./src/app/_components/react-hook-form"]
+      "@/form": ["./src/app/components/react-hook-form"],
+      "@/form-fields/*": ["./src/app/components/react-hook-form/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

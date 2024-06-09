@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} dark px-2 md:px-5`}>
+      <body className={`${inter.className}  px-2 md:px-5`}>
         {/*
         <header className="flex mb-5 gap-2 text-2xl py-3 px-6 bg-blue-900 text-white rounded-b-xl shadow-gray-700 drop-shadow-2xl">
           <Home.Link className="font-extrabold">Home</Home.Link>
