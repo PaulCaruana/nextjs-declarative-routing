@@ -38,6 +38,14 @@ export abstract class DataAccessServiceDrizzle<
       .returning();
     return insertResult[0] as E;
   }
+
+  async createMany(entities: E[]): Promise<void> {
+    await this.db
+      .insert(this.schema)
+      .values(entities as any[])
+      .returning();
+  }
+
   /*
     async getAll(): Promise<YourModelType[]> {
       return await this.db.select().from(yourTable);

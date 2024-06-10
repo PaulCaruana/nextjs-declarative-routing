@@ -1,5 +1,5 @@
 import { createContainer, asClass, asValue, InjectionMode } from "awilix";
-import { db, DB } from "@/server/db/drizzleOrm";
+import { DB, loadDB } from "@/server/db/drizzleOrm";
 import { UserServiceDrizzle } from "@/server/services/user/UserServiceDrizzle";
 import { UserService } from "@/server/services/user/UserService";
 
@@ -14,7 +14,7 @@ const serviceContainer = createContainer<ServiceContainerCradle>({
 
 serviceContainer.register({
   userService: asClass(UserServiceDrizzle).singleton(),
-  db: asValue(db),
+  db: asValue(loadDB()),
 });
 
 const userService = serviceContainer.cradle.userService;
