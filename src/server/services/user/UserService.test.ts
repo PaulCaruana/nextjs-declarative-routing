@@ -4,9 +4,10 @@ import { loadDB } from "@/server/db/drizzleOrm";
 import { generateUsers } from "@/server/services/user/user-data";
 
 let userService: UserService;
+let testUsers = generateUsers(10);
 beforeEach(async () => {
   userService = new UserServiceDrizzle({ db: loadDB() });
-  await userService.createMany(generateUsers(10));
+  await userService.createMany(testUsers);
 });
 
 afterEach(() => {});
