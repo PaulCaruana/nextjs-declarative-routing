@@ -1,6 +1,7 @@
 "use client";
 import { Components, createTheme, PaletteOptions } from "@mui/material/styles";
 import { TypographyOptions } from "@mui/material/styles/createTypography";
+import { Roboto } from "next/font/google";
 
 export const lightPalette = {
   common: {
@@ -88,7 +89,15 @@ export const lightPalette = {
   },
 } as PaletteOptions;
 
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
 const typography = {
+  fontFamily: "roboto, helvetica, arial, sans-serif",
+  fontSize: 16,
   h1: {
     fontSize: "3em",
     fontWeight: 600,
@@ -125,6 +134,11 @@ const typography = {
     letterSpacing: "0.15px",
     lineHeight: 1,
   },
+  success: {
+    color: "green",
+    fontSize: "16px",
+    fontWeight: "bold",
+  },
   subtitle1: {
     fontSize: "1.5em",
     fontWeight: 400,
@@ -136,12 +150,7 @@ const typography = {
     fontWeight: 400,
     lineHeight: 1,
   },
-  body1: {
-    fontSize: "1em",
-    fontWeight: 400,
-    lineHeight: 1,
-  },
-  body2: {
+  body3: {
     fontSize: "1em",
     fontWeight: 400,
     letterSpacing: "-0.1px",
@@ -162,62 +171,60 @@ const components = {
     styleOverrides: {
       h1: {
         fontSize: "3em",
-        fontWeight: 600,
-        letterSpacing: "0.25px",
-        lineHeight: 1,
+        fontWeight: 300,
+        lineHeight: "1.15em",
       },
       h2: {
-        fontSize: "2em",
-        fontWeight: 600,
-        letterSpacing: "0.15px",
-        lineHeight: 1,
+        fontSize: "2.6em",
+        fontWeight: 300,
+        lineHeight: "1.5em",
       },
       h3: {
-        fontSize: "1.5em",
-        fontWeight: 500,
-        letterSpacing: "0.15px",
-        lineHeight: 1,
+        fontSize: "1.825em",
+        fontWeight: 300,
+        margin: "20px 0 10px",
       },
       h4: {
-        fontSize: "1.25em",
-        letterSpacing: "0.15px",
-        fontWeight: 500,
-        lineHeight: 1,
+        fontSize: "1.3em",
+        fontWeight: 300,
+        margin: "10px 0",
+        lineHeight: "1.4em",
       },
       h5: {
-        fontSize: "1em",
-        fontWeight: 600,
-        letterSpacing: "0.15px",
-        lineHeight: 1,
+        fontSize: "1.25em",
+        fontWeight: 300,
+        margin: "10px 0",
+        lineHeight: "1.4em",
       },
       h6: {
-        fontSize: "0.85em",
-        fontWeight: 600,
-        letterSpacing: "0.15px",
-        lineHeight: 1,
+        fontSize: "0.8em",
+        fontWeight: 500,
+        margin: "10px 0",
+        lineHeight: "1.5em",
+        textTransform: "uppercase",
       },
-      subtitle1: {
-        fontSize: "1.5em",
-        fontWeight: 400,
-        letterSpacing: "0.15px",
-        lineHeight: 1,
+      p: {
+        fontSize: "0.875em",
+        fontWeight: 300,
+        wordWrap: "break-word",
+        lineHeight: "1.5em",
+        marginBottom: "15px",
       },
-      subtitle2: {
-        fontSize: "0.7em",
-        fontWeight: 400,
-        lineHeight: 1,
+      blockquote: {
+        margin: "0 0 20px",
+        padding: "10px 20px",
+        fontSize: "0.8em",
+        fontStyle: "italic",
+        borderLeft: "5px solid #eee",
+        fontWeight: 300,
+        lineHeight: "1.5em",
       },
-      body1: {
+      body: {
         fontSize: "1em",
-        fontWeight: 400,
+        fontWeight: 300,
         lineHeight: 1,
       },
-      body2: {
-        fontSize: "1em",
-        fontWeight: 400,
-        letterSpacing: "-0.1px",
-        lineHeight: 1,
-      },
+
       button: {
         fontSize: "1em",
         fontWeight: 600,
