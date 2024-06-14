@@ -3,7 +3,7 @@ import { User, userSchema } from "@/model/user";
 import { revalidatePath } from "next/cache";
 import { postUsers } from "@/routes";
 import UserForm from "@/app/components/users/UserForm";
-import Container from "@/app/components/mui/surfaces/Container";
+import Container from "@/surfaces/containers/Container";
 
 type UserFormAction = {
   message: string;
@@ -45,56 +45,6 @@ export default async function Home() {
 
   return (
     <main>
-      <h6>Left</h6>
-      <Container gap={"8px"}>
-        <Sample />
-      </Container>
-      <h6>Equal</h6>
-      <Container variant={"equal"} gap={"8px"}>
-        <Sample />
-      </Container>
-      <h6>Spread</h6>
-      <Container variant={"spread"} gap={"8px"}>
-        <Sample />
-      </Container>
-      <h6>Evenly</h6>
-      <Container variant={"evenly"} gap={"8px"}>
-        <Sample />
-      </Container>
-      <h6>Middle</h6>
-      <Container variant={"middle"} gap={"8px"}>
-        <Sample />
-      </Container>
-      <h6>Centre</h6>
-      <Container variant={"center"} gap={"8px"}>
-        <Sample />
-      </Container>
-      <h6>Right</h6>
-      <Container variant={"right"} gap={"8px"}>
-        <Sample />
-      </Container>
-      <h6>Stacked</h6>
-      <Container direction={"column"} gap={"8px"}>
-        <Sample />
-      </Container>
-      <h6>Stacked centre</h6>
-      <Container variant="center" direction={"column"} gap={"8px"}>
-        <Sample />
-      </Container>
-      <h6>Wrap</h6>
-      <Container variant={"wrap"} gap={"8px"}>
-        <Sample />
-        <Sample />
-        <Sample />
-        <Sample />
-        <Sample />
-        <Sample />
-        <Sample />
-        <Sample />
-        <Sample />
-        <Sample />
-        <Sample />
-      </Container>
       <UserForm onFormAction={onFormAction} />
       <UserList />
     </main>

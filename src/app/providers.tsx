@@ -7,7 +7,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { useState } from "react";
 import { lightTheme } from "@/app/theme/light";
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({
+  children,
+  isPreviewMode = true,
+}: {
+  children: React.ReactNode;
+  isPreviewMode?: boolean;
+}) {
   const [client] = useState(new QueryClient());
 
   return (
@@ -16,7 +22,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         <CssBaseline />
         <QueryClientProvider client={client}>
           {children}
-          <ReactQueryDevtools initialIsOpen={false} />
+          {isPreviewMode && <ReactQueryDevtools initialIsOpen={false} />}
         </QueryClientProvider>
       </ThemeProvider>
     </StyledEngineProvider>

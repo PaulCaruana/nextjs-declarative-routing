@@ -4,7 +4,7 @@ import { Box, BoxProps } from "@mui/material";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
-type Props = Omit<BoxProps, "justifyContent"> & {
+type Props = Omit<BoxProps, "justifyContent" | "flexDirection"> & {
   variant?:
     | "left"
     | "equal"
