@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box } from "@mui/material";
-import { Container } from "@/surfaces/containers";
+import { Container } from "@/library";
 
 const meta = {
   title: "Surfaces/Container",

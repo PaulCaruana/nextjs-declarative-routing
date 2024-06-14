@@ -3,7 +3,7 @@ import TextField, { TextFieldProps } from "@mui/material/TextField";
 
 type MuiTextFieldProps = Omit<TextFieldProps, "name"> & { name: string };
 
-export const FormInputText = ({ name, label, ...props }: MuiTextFieldProps) => {
+const FormInputText = ({ name, label, ...props }: MuiTextFieldProps) => {
   const { control } = useFormContext(); // retrieve all hook methods
   return (
     <Controller
@@ -27,3 +27,5 @@ export const FormInputText = ({ name, label, ...props }: MuiTextFieldProps) => {
     />
   );
 };
+
+export default FormInputText;

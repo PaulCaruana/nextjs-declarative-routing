@@ -2,8 +2,7 @@
 import { useFormState } from "react-dom";
 import React, { useRef } from "react";
 import { User, userSchema } from "@/model/user";
-import { Form, SubmitButton, useZodForm } from "@/form";
-import { FormInputText } from "@/form-fields/FormInputText";
+import { Form, FormInputText, SubmitButton, useZodForm } from "@/form";
 
 type UserFormAction = {
   message: string;

@@ -3,7 +3,6 @@ import { User, userSchema } from "@/model/user";
 import { revalidatePath } from "next/cache";
 import { postUsers } from "@/routes";
 import UserForm from "@/app/components/users/UserForm";
-import Container from "@/surfaces/containers/Container";
 
 type UserFormAction = {
   message: string;

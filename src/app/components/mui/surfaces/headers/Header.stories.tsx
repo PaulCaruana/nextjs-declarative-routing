@@ -1,9 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box } from "@mui/material";
-import Header from "@/surfaces/containers/Header";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
+import { Header } from "@/library";
 
 const meta = {
   title: "Surfaces/Header",

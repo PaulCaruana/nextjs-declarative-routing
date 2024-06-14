@@ -21,7 +21,9 @@
       "@/*": ["./src/*"],
       "@/form": ["./src/app/components/mui/react-hook-form"],
       "@/form-fields/*": ["./src/app/components/mui/react-hook-form/*"],
-      "@/surfaces/*": ["./src/app/components/mui/surfaces/*"]
+      "@/surfaces/*": ["./src/app/components/mui/surfaces/*"],
+      "@/library": ["./src/app/components/mui"],
+      "@/library/*": ["./src/app/components/mui/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
