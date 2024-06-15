@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import { Container } from "@/library";
 
 const meta = {
-  title: "Surfaces/Container",
+  title: "Layout/Container",
   component: Container,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],

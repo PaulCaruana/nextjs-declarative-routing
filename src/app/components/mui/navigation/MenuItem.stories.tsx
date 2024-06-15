@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box } from "@mui/material";
-import { Centre } from "@/library";
+import { MenuItem } from "@/library";
 
 const meta = {
-  title: "Layout/Centre",
-  component: Centre,
+  title: "Navigation/MenuItem",
+  component: MenuItem,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   parameters: {
@@ -12,22 +12,13 @@ const meta = {
     layout: "fullscreen",
   },
   args: {},
-} satisfies Meta<typeof Centre>;
+} satisfies Meta<typeof MenuItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: (
-      <Box
-        sx={{
-          backgroundColor: "#eee",
-          padding: "16px",
-        }}
-      >
-        Content
-      </Box>
-    ),
+    label: "Inbox",
   },
 };
