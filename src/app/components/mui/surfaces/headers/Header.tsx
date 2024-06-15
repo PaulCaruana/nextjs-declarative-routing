@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { AppBar, Box, AppBarProps, Toolbar } from "@mui/material";
-import styled from "@emotion/styled";
+import { AppBar, AppBarProps, Box, Toolbar } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { css } from "@emotion/react";
 
 type Props = AppBarProps & {
@@ -18,6 +18,7 @@ const Header: React.FC<Props> = ({ children, ...appBarProps }) => {
 
 const StyledBox = styled(Box)(
   ({ theme }) => css`
+    color: ${theme.palette.primary.main};
     margin: 0 auto;
   `,
 );
