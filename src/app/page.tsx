@@ -3,6 +3,7 @@ import { User, userSchema } from "@/model/user";
 import { revalidatePath } from "next/cache";
 import { postUsers } from "@/routes";
 import UserForm from "@/app/components/users/UserForm";
+import Icons from "@/library/layout/icons/Icons";
 
 type UserFormAction = {
   message: string;
@@ -44,6 +45,7 @@ export default async function Home() {
 
   return (
     <main>
+      <Icons />
       <UserForm onFormAction={onFormAction} />
       <UserList />
     </main>

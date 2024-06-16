@@ -169,9 +169,7 @@ const typography = {
 const components = {
   MuiListItemIcon: {
     styleOverrides: {
-      root: {
-        minWidth: "44px", // Change the minimum width
-      },
+      root: {},
     },
   },
   MuiCssBaseline: {
