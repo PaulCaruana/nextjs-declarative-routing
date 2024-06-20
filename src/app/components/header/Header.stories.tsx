@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Box } from "@mui/material";
-import { Centre } from "@/library";
+import Header from "@/app/components/header/Header";
 
 const meta = {
-  title: "Library/Centre",
-  component: Centre,
+  title: "Components/Header",
+  component: Header,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
   parameters: {
@@ -12,22 +12,11 @@ const meta = {
     layout: "fullscreen",
   },
   args: {},
-} satisfies Meta<typeof Centre>;
+} satisfies Meta<typeof Header>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    children: (
-      <Box
-        sx={{
-          backgroundColor: "#eee",
-          padding: "16px",
-        }}
-      >
-        Content
-      </Box>
-    ),
-  },
+  args: {},
 };

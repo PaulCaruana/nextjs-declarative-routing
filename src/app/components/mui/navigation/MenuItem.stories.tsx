@@ -5,7 +5,7 @@ import InboxIcon from "@mui/icons-material/Inbox";
 import { fn } from "@storybook/test";
 
 const meta = {
-  title: "Navigation/MenuItem",
+  title: "Library/MenuItem",
   component: MenuItem,
   decorators: [
     (Story) => (

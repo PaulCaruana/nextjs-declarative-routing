@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { Header } from "@/library";
 
 const meta = {
-  title: "Surfaces/Header",
+  title: "Library/Header",
   component: Header,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
